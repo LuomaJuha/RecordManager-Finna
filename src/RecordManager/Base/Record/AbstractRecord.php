@@ -578,6 +578,30 @@ abstract class AbstractRecord
     }
 
     /**
+     * Return extraFields as assoc array, key => value
+     *
+     * @return array
+     */
+    protected function getExtraFields(): array
+    {
+        $cacheKey = __FUNCTION__;
+        if (isset($this->resultCache[$cacheKey])) {
+            return $this->resultCache[$cacheKey];
+        }
+        $result = [];
+        $extraFields = $this->dataSourceConfig[$this->source]['extrafields']
+            ?? $this->dataSourceConfig[$this->source]['extraFields']
+            ?? [];
+        foreach ($extraFields as $value) {
+            $exploded = explode(':', $value, 2);
+            if (count($exploded) === 2) {
+                $result[$exploded[0]] = $exploded[1];
+            }
+        }
+        return $this->resultCache[$cacheKey] = $result;
+    }
+
+    /**
      * Verify that a string is valid ISO8601 date
      *
      * @param string $dateString Date string
