@@ -107,7 +107,7 @@ trait QdcRecordTrait
         foreach ($this->getOnlineUrls() as $url) {
             $data['online_urls_str_mv'][] = json_encode($url);
         }
-        $data['media_type_str_mv'] = array_values(
+        $data['media_type_str_mv'] = $data['media_type_facet_str_mv'] = array_values(
             array_unique(
                 array_column($onlineUrls, 'mediaType')
             )

@@ -721,6 +721,9 @@ class Ead3Test extends \RecordManagerTest\Base\Record\RecordTestBase
             'media_type_str_mv' => [
                 'image/tiff',
             ],
+            'media_type_facet_str_mv' => [
+                'image/tiff',
+            ],
         ];
 
         $this->assertEquals(

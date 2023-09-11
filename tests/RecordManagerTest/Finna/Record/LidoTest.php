@@ -272,6 +272,9 @@ class LidoTest extends \RecordManagerTest\Base\Record\RecordTestBase
             'media_type_str_mv' => [
                 'image/jpeg',
             ],
+            'media_type_facet_str_mv' => [
+                'image/jpeg',
+            ],
         ];
 
         $this->compareArray($expected, $fields, 'toSolrArray');
@@ -315,6 +318,13 @@ class LidoTest extends \RecordManagerTest\Base\Record\RecordTestBase
             ],
             $fields['media_type_str_mv']
         );
+        $this->assertEquals(
+            [
+                'image/tiff',
+                'image/png',
+            ],
+            $fields['media_type_facet_str_mv']
+        );
     }
 
     /**
@@ -356,6 +366,7 @@ class LidoTest extends \RecordManagerTest\Base\Record\RecordTestBase
             $fields['creation_daterange']
         );
         $this->assertEquals(['image/jpeg'], $fields['media_type_str_mv']);
+        $this->assertEquals(['image/jpeg'], $fields['media_type_facet_str_mv']);
     }
 
     /**

@@ -202,7 +202,7 @@ class Ead extends \RecordManager\Base\Record\Ead
             $data['format_ext_str_mv'][] = 'Image';
         }
         $onlineUrls = $this->getOnlineURLs();
-        $data['media_type_str_mv'] = array_values(
+        $data['media_type_str_mv'] = $data['media_type_facet_str_mv'] = array_values(
             array_unique(
                 array_column($onlineUrls, 'mediaType')
             )

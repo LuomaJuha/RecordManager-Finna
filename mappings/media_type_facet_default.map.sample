@@ -1,0 +1,9 @@
+^(image/.*)$ = image
+^(text/.*)$ = text
+^(application/pdf)$= text
+^(audio/.*)$ = audio
+^(video/.*)$ = video
+^(model/.*)$ = model
+
+; Ignore any other values
+##default =
