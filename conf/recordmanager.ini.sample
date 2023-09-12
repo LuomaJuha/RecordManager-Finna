@@ -262,7 +262,7 @@ dewey-ones = dewey_ones.map
 ;usage_rights_str_mv = usage_rights.map
 ;language = language_codes.map
 ;media_type_str_mv = media_type_default.map
-;media_type_facet_str_mv = media_type_facet_default.map
+;media_type_simplified_str_mv = media_type_simplified_default.map
 
 [NominatimGeocoder]
 ; Please see http://wiki.openstreetmap.org/wiki/Nominatim_usage_policy before using

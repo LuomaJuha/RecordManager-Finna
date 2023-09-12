@@ -272,7 +272,7 @@ class LidoTest extends \RecordManagerTest\Base\Record\RecordTestBase
             'media_type_str_mv' => [
                 'image/jpeg',
             ],
-            'media_type_facet_str_mv' => [
+            'media_type_simplified_str_mv' => [
                 'image/jpeg',
             ],
         ];
@@ -323,7 +323,7 @@ class LidoTest extends \RecordManagerTest\Base\Record\RecordTestBase
                 'image/tiff',
                 'image/png',
             ],
-            $fields['media_type_facet_str_mv']
+            $fields['media_type_simplified_str_mv']
         );
     }
 
@@ -366,7 +366,7 @@ class LidoTest extends \RecordManagerTest\Base\Record\RecordTestBase
             $fields['creation_daterange']
         );
         $this->assertEquals(['image/jpeg'], $fields['media_type_str_mv']);
-        $this->assertEquals(['image/jpeg'], $fields['media_type_facet_str_mv']);
+        $this->assertEquals(['image/jpeg'], $fields['media_type_simplified_str_mv']);
     }
 
     /**

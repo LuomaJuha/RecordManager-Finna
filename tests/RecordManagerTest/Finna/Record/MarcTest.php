@@ -275,7 +275,7 @@ class MarcTest extends \RecordManagerTest\Base\Record\RecordTestBase
             'topic_id_str_mv' => [],
             'description' => 'Summary field',
             'media_type_str_mv' => [],
-            'media_type_facet_str_mv' => [],
+            'media_type_simplified_str_mv' => [],
         ];
 
         $this->compareArray($expected, $fields, 'toSolrArray');
@@ -478,7 +478,7 @@ class MarcTest extends \RecordManagerTest\Base\Record\RecordTestBase
             ],
             'description' => '',
             'media_type_str_mv' => [],
-            'media_type_facet_str_mv' => [],
+            'media_type_simplified_str_mv' => [],
         ];
 
         $this->compareArray($expected, $fields, 'toSolrArray');
@@ -661,7 +661,7 @@ class MarcTest extends \RecordManagerTest\Base\Record\RecordTestBase
             'topic_id_str_mv' => [],
             'description' => '',
             'media_type_str_mv' => [],
-            'media_type_facet_str_mv' => [],
+            'media_type_simplified_str_mv' => [],
         ];
 
         $this->compareArray($expected, $fields, 'toSolrArray');
@@ -804,7 +804,7 @@ class MarcTest extends \RecordManagerTest\Base\Record\RecordTestBase
             ],
             'description' => '',
             'media_type_str_mv' => [],
-            'media_type_facet_str_mv' => [],
+            'media_type_simplified_str_mv' => [],
         ];
 
         $this->compareArray($expected, $fields, 'toSolrArray');
@@ -945,7 +945,7 @@ class MarcTest extends \RecordManagerTest\Base\Record\RecordTestBase
             ],
             'description' => '',
             'media_type_str_mv' => [],
-            'media_type_facet_str_mv' => [],
+            'media_type_simplified_str_mv' => [],
         ];
 
         $this->compareArray($expected, $fields, 'toSolrArray');
@@ -1056,7 +1056,7 @@ class MarcTest extends \RecordManagerTest\Base\Record\RecordTestBase
             'topic_id_str_mv' => [],
             'description' => '',
             'media_type_str_mv' => [],
-            'media_type_facet_str_mv' => [],
+            'media_type_simplified_str_mv' => [],
         ];
 
         $this->compareArray($expected, $fields, 'toSolrArray');
@@ -1197,7 +1197,7 @@ class MarcTest extends \RecordManagerTest\Base\Record\RecordTestBase
                 'audio/x-wav',
                 'application/pdf',
             ],
-            $fields['media_type_facet_str_mv']
+            $fields['media_type_simplified_str_mv']
         );
     }
 }

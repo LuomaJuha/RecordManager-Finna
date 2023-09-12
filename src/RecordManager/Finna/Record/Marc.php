@@ -476,7 +476,7 @@ class Marc extends \RecordManager\Base\Record\Marc
             $link['source'] = $this->source;
             $data['online_urls_str_mv'][] = json_encode($link);
         }
-        $data['media_type_str_mv'] = $data['media_type_facet_str_mv'] = array_values(
+        $data['media_type_str_mv'] = $data['media_type_simplified_str_mv'] = array_values(
             array_unique(
                 array_column($onlineUrls, 'mediaType')
             )

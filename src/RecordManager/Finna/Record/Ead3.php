@@ -191,7 +191,7 @@ class Ead3 extends \RecordManager\Base\Record\Ead3
             $data['rights'] = (string)$doc->did->accessrestrict->p;
         }
         $onlineUrls = $this->getOnlineURLs();
-        $data['media_type_str_mv'] = $data['media_type_facet_str_mv'] = array_values(
+        $data['media_type_str_mv'] = $data['media_type_simplified_str_mv'] = array_values(
             array_unique(
                 array_column($onlineUrls, 'mediaType')
             )
