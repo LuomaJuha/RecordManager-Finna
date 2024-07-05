@@ -180,7 +180,7 @@ class HTTPFiles extends AbstractBase
      */
     protected function retrieveFileList()
     {
-        $client = $this->httpService->createClient($this->baseURL);
+        $client = $this->httpService->createClient($this->baseURL, [], true);
         $url = $this->baseURL;
         $this->infoMsg("Sending request: $url");
 
@@ -257,7 +257,7 @@ class HTTPFiles extends AbstractBase
     protected function retrieveFile($filename)
     {
         $url = $this->baseURL . $filename;
-        $request = $this->httpService->createClient($url, ['auth' => $this->httpAuth]);
+        $request = $this->httpService->createClient($url, ['auth' => $this->httpAuth], true);
         $this->infoMsg("Sending request: $url");
 
         // Perform request and throw an exception on error:
