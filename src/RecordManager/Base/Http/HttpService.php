@@ -72,23 +72,28 @@ class HttpService
     public function __construct(array $config)
     {
         $this->config = $config;
-        $this->mapSettings();
+        //$this->mapSettings(); Test: only setting tcp keepalive when needed
         $this->mapLegacySettings();
     }
 
     /**
      * Create a client
      *
-     * @param string $url     Request URL
-     * @param array  $options Configuration options
+     * @param string $url       Request URL
+     * @param array  $options   Configuration options
+     * @param bool   $keepalive Whether to enable keepalive
      *
      * @return Client
      */
     public function createClient(
         string $url,
-        array $options = []
+        array $options = [],
+        bool $keepalive = false
     ): Client {
         $config = $options + ($this->config['HTTP'] ?? []);
+        if ($keepalive && $keepaliveSettings = $this->getKeepAliveSettings()) {
+            $config = array_merge_recursive($config, $keepaliveSettings);
+        }
         if (isset($config['disable_proxy_hosts'])) {
             if ($url && !empty($config['proxy'])) {
                 $host = parse_url($url, PHP_URL_HOST);
@@ -139,18 +144,24 @@ class HttpService
     }
 
     /**
-     * Map settings to Guzzle settings
+     * Get keepalive settings
+     * - HTTP
+     *  - curl
+     *      - CURLOPT_TCP_KEEPALIVE: Enable TCP keepalive
+     *      - CURLOPT_TCP_KEEPINTVL: TCP keepalive interval
      *
-     * @return void
+     * @return array
      */
-    protected function mapSettings(): void
+    protected function getKeepAliveSettings(): array
     {
+        $result = [];
         if ($this->config['HTTP']['tcp_keepalive'] ?? false) {
-            $this->config['HTTP']['curl'][\CURLOPT_TCP_KEEPALIVE] = true;
+            $result['HTTP']['curl'][\CURLOPT_TCP_KEEPALIVE] = true;
             if ($interval = $this->config['HTTP']['tcp_keepalive_interval'] ?? null) {
-                $this->config['HTTP']['curl'][\CURLOPT_TCP_KEEPINTVL] = (int)$interval;
+                $result['HTTP']['curl'][\CURLOPT_TCP_KEEPINTVL] = (int)$interval;
             }
         }
+        return $result;
     }
 
     /**
