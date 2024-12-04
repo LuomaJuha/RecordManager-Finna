@@ -923,6 +923,27 @@ class Marc extends \RecordManager\Base\Record\Marc
             }
         }
 
+        // Performers
+        foreach ($this->record->getFields('382') as $performer) {
+            $performerData = [];
+            $lastIndex = null;
+            foreach ($performer['subfields'] ?? [] as $subfield) {
+                if (in_array($subfield['code'], ['a', 'b', 'd', 'p'])) {
+                    $performerData[] = $subfield['data'] . '/' . $subfield['data'];
+                    $lastIndex = array_key_last($performerData);
+                }
+                if (in_array($subfield['code'], ['n', 'e']) && $lastIndex !== null) {
+                    $performerData[$lastIndex] .= ' (' . $subfield['data'] . ')';
+                }
+                if ('s' === $subfield['code']) {
+                    $data['performer_total_int_mv'][] = $subfield['data'];
+                }
+            }
+            if (!empty($performerData)) {
+                $data['performer_str_mv'] = array_merge($data['performer_str_mv'] ?? [], $performerData);
+            }
+        }
+
         // Merge any extra fields from e.g. merged component parts (also converts any
         // single-value field to an array):
         foreach ($this->extraFields as $field => $fieldData) {
