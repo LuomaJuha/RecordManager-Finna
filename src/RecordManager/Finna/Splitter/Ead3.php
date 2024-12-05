@@ -49,6 +49,35 @@ use function in_array;
 class Ead3 extends \RecordManager\Base\Splitter\Ead3
 {
     /**
+     * Terms determining that archive type is collection
+     *
+     * @var array
+     */
+    protected $collectionTerms = [
+        'collection', 'kokoelma', 'samling',
+    ];
+
+    /**
+     * Archive type
+     *
+     * @var string
+     */
+    protected $archiveType = 'archive';
+
+    /**
+     * Set metadata
+     *
+     * @param string $data EAD XML
+     *
+     * @return void
+     */
+    public function setData($data): void
+    {
+        parent::setData($data);
+        $this->archiveType = $this->getArchiveType();
+    }
+
+    /**
      * Get archive title
      *
      * @return string
@@ -95,5 +124,34 @@ class Ead3 extends \RecordManager\Base\Splitter\Ead3
         }
 
         return $pid;
+    }
+
+    /**
+     * Get the archive type
+     *
+     * @return string
+     */
+    protected function getArchiveType(): string
+    {
+        foreach ($this->doc->archdesc->controlaccess->genreform->part ?? [] as $part) {
+            if (in_array(strtolower((string)$part), $this->collectionTerms)) {
+                return 'collection';
+            }
+        }
+        return 'archive';
+    }
+
+    /**
+     * Add and form additional data to record
+     *
+     * @param \SimpleXMLElement $record   The record
+     * @param \SimpleXMLElement $original The original record
+     *
+     * @return void
+     */
+    protected function addAdditionalData(&$record, &$original): void
+    {
+        parent::addAdditionalData($record, $original);
+        $record->{'add-data'}->archive->addAttribute('type', $this->archiveType);
     }
 }
