@@ -47,6 +47,7 @@ use function count;
 use function defined;
 use function in_array;
 use function is_array;
+use function is_string;
 use function strlen;
 
 /**
@@ -2401,11 +2402,13 @@ class SolrUpdater
         foreach ($data as $key => &$values) {
             if (is_array($values)) {
                 foreach ($values as $key2 => &$value) {
-                    $value = $this->metadataUtils->normalizeUnicode(
-                        $value,
-                        $this->unicodeNormalizationForm
-                    );
-                    $value = $this->trimFieldLength($key, $value);
+                    if (is_string($value)) {
+                        $value = $this->metadataUtils->normalizeUnicode(
+                            $value,
+                            $this->unicodeNormalizationForm
+                        );
+                        $value = $this->trimFieldLength($key, $value);
+                    }
                     if (in_array($value, $this->nonIndexedValues, true)) {
                         unset($values[$key2]);
                     }
@@ -2416,11 +2419,13 @@ class SolrUpdater
                     $values = array_values(array_unique($values));
                 }
             } elseif ($key !== 'fullrecord') {
-                $values = $this->metadataUtils->normalizeUnicode(
-                    $values,
-                    $this->unicodeNormalizationForm
-                );
-                $values = $this->trimFieldLength($key, $values);
+                if (is_string($values)) {
+                    $values = $this->metadataUtils->normalizeUnicode(
+                        $values,
+                        $this->unicodeNormalizationForm
+                    );
+                    $values = $this->trimFieldLength($key, $values);
+                }
 
                 if (in_array($values, $this->nonIndexedValues, true)) {
                     unset($data[$key]);
