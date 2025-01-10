@@ -38,6 +38,7 @@ use RecordManager\Base\Utils\MetadataUtils;
 use function boolval;
 use function count;
 use function in_array;
+use function sprintf;
 
 /**
  * EAD 3 Record Class
@@ -122,12 +123,11 @@ class Ead3 extends \RecordManager\Base\Record\Ead3
     /**
      * Return fields to be indexed in Solr
      *
-     * @param Database $db Database connection. Omit to avoid database lookups for
-     *                     related records.
+     * @param ?Database $db Database connection. Omit to avoid database lookups for related records.
      *
      * @return array<string, mixed>
      */
-    public function toSolrArray(Database $db = null)
+    public function toSolrArray(?Database $db = null)
     {
         $data = parent::toSolrArray($db);
         $doc = $this->doc;

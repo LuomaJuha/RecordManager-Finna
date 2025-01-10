@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Finna module configuration
  *

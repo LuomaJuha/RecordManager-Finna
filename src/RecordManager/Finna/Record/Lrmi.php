@@ -85,7 +85,7 @@ class Lrmi extends \RecordManager\Base\Record\Lrmi
         Logger $logger,
         MetadataUtils $metadataUtils,
         HttpService $httpService,
-        Database $db = null
+        ?Database $db = null
     ) {
         parent::__construct(
             $config,
@@ -101,12 +101,11 @@ class Lrmi extends \RecordManager\Base\Record\Lrmi
     /**
      * Return fields to be indexed in Solr
      *
-     * @param Database $db Database connection. Omit to avoid database lookups for
-     *                     related records.
+     * @param ?Database $db Database connection. Omit to avoid database lookups for related records.
      *
      * @return array<string, mixed>
      */
-    public function toSolrArray(Database $db = null)
+    public function toSolrArray(?Database $db = null)
     {
         $data = $this->_toSolrArray();
 

@@ -76,7 +76,7 @@ class Qdc extends \RecordManager\Base\Record\Qdc
         Logger $logger,
         MetadataUtils $metadataUtils,
         HttpService $httpService,
-        Database $db = null
+        ?Database $db = null
     ) {
         parent::__construct(
             $config,
