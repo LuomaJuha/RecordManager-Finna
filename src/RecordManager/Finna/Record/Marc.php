@@ -936,7 +936,7 @@ class Marc extends \RecordManager\Base\Record\Marc
                     $performerData[$lastIndex] .= ' (' . $subfield['data'] . ')';
                 }
                 if ('s' === $subfield['code']) {
-                    $data['performer_total_int_mv'][] = $subfield['data'];
+                    $data['performer_total_int_mv'][] = (int)$subfield['data'];
                 }
             }
             if (!empty($performerData)) {
