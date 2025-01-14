@@ -602,7 +602,7 @@ class Marc extends \RecordManager\Base\Record\Marc
         // NBN
         foreach ($this->record->getFields('015') as $field015) {
             $nbn = $this->record->getSubfield($field015, 'a');
-            $data['nbn_isn_mv'] = $nbn;
+            $data['nbn_str_mv'] = $data['nbn_isn_mv'] = $nbn;
         }
 
         // ISMN, ISRC, UPC, EAN
