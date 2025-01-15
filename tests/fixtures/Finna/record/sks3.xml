@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<archdesc level="fonds">
+  <controlaccess>
+    <genreform encodinganalog="ahaa:AI08">
+      <part lang="fin">Teksti</part>
+      <part lang="eng">Text</part>
+    </genreform>
+  </controlaccess>
+  <add-data identifier="237990354">
+    <archive id="237990354" title="" sequence="0000001"/>
+  </add-data>
+</archdesc>

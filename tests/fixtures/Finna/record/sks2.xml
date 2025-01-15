@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<c02 level="file">
+  <controlaccess>
+    <genreform encodinganalog="ahaa:AI08">
+      <part lang="fin">Teksti</part>
+      <part lang="eng">Text</part>
+    </genreform>
+        <genreform encodinganalog="ahaa:AI57">
+      <part lang="fin">Kirje</part>
+      <part lang="eng">Letter</part>
+    </genreform>
+  </controlaccess>
+  <add-data identifier="237990354_238612737">
+    <archive id="237990354" title="" sequence="0000003"/>
+    <parent id="237990354_238008149" title="" level="archive"/>
+  </add-data>
+</c02>

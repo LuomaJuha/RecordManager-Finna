@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<archdesc level="collection">
+  <controlaccess>
+    <genreform>
+      <part lang="fin">Valokuva</part>
+      <part lang="eng">Photograph</part>
+    </genreform>
+  </controlaccess>
+  <add-data identifier="237990354">
+    <archive id="237990354" title="" sequence="0000001"/>
+  </add-data>
+</archdesc>

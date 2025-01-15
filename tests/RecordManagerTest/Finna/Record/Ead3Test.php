@@ -941,4 +941,33 @@ class Ead3Test extends \RecordManagerTest\Base\Record\RecordTestBase
             $fields['topic_id_str_mv']
         );
     }
+
+    /**
+     * Test format
+     *
+     * @return void
+     */
+    public function testFormat()
+    {
+        // file-level record with AI08 genreform
+        $fields = $this->createRecord(Ead3::class, 'sks.xml', [], 'Finna')
+            ->toSolrArray();
+        $this->assertEquals('Teksti', $fields['format']);
+        // file-level record with AI08 and AI57 genreforms
+        $fields = $this->createRecord(Ead3::class, 'sks2.xml', [], 'Finna')
+            ->toSolrArray();
+        $this->assertEquals('Teksti/Kirje', $fields['format']);
+        // file-level record with genreform without encodinganalog
+        $fields = $this->createRecord(Ead3::class, 'sks5.xml', [], 'Finna')
+            ->toSolrArray();
+        $this->assertEquals('Kirje', $fields['format']);
+        // fonds-level record with AI08 genreform
+        $fields = $this->createRecord(Ead3::class, 'sks3.xml', [], 'Finna')
+            ->toSolrArray();
+        $this->assertEquals('fonds/Teksti', $fields['format']);
+        // collection-level record with genreform without encodinganalog
+        $fields = $this->createRecord(Ead3::class, 'sks4.xml', [], 'Finna')
+            ->toSolrArray();
+        $this->assertEquals('collection/Valokuva', $fields['format']);
+    }
 }
