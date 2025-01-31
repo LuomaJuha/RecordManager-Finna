@@ -275,6 +275,12 @@ class MarcTest extends \RecordManagerTest\Base\Record\RecordTestBase
             'description' => 'Summary field',
             'media_type_str_mv' => [],
             'major_genre_str_mv' => 'nonfiction',
+            'linking_id_str_mv' => [
+                '123',
+                'FCC005246184',
+                '378890',
+                '401416',
+            ],
         ];
 
         $this->compareArray($expected, $fields, 'toSolrArray');
@@ -477,6 +483,11 @@ class MarcTest extends \RecordManagerTest\Base\Record\RecordTestBase
             ],
             'description' => '',
             'media_type_str_mv' => [],
+            'linking_id_str_mv' => [
+                '1234',
+                '1558192',
+                'FCC002608043',
+            ],
         ];
 
         $this->compareArray($expected, $fields, 'toSolrArray');
@@ -659,6 +670,12 @@ class MarcTest extends \RecordManagerTest\Base\Record\RecordTestBase
             'topic_id_str_mv' => [],
             'description' => '',
             'media_type_str_mv' => [],
+            'linking_id_str_mv' => [
+                '107786',
+                '(FI-Piki)Ppro837_107786',
+                '(PIKI)Ppro837_107786',
+                '(FI-MELINDA)000963219',
+            ],
         ];
 
         $this->compareArray($expected, $fields, 'toSolrArray');
@@ -801,6 +818,9 @@ class MarcTest extends \RecordManagerTest\Base\Record\RecordTestBase
             ],
             'description' => '',
             'media_type_str_mv' => [],
+            'linking_id_str_mv' => [
+                '123',
+            ],
         ];
 
         $this->compareArray($expected, $fields, 'toSolrArray');
@@ -941,6 +961,9 @@ class MarcTest extends \RecordManagerTest\Base\Record\RecordTestBase
             ],
             'description' => '',
             'media_type_str_mv' => [],
+            'linking_id_str_mv' => [
+                '123',
+            ],
         ];
 
         $this->compareArray($expected, $fields, 'toSolrArray');
@@ -1061,6 +1084,9 @@ class MarcTest extends \RecordManagerTest\Base\Record\RecordTestBase
             ],
             'description' => '',
             'media_type_str_mv' => [],
+            'linking_id_str_mv' => [
+                '123',
+            ],
         ];
 
         $this->compareArray($expected, $fields, 'toSolrArray');
@@ -1171,6 +1197,9 @@ class MarcTest extends \RecordManagerTest\Base\Record\RecordTestBase
             'topic_id_str_mv' => [],
             'description' => '',
             'media_type_str_mv' => [],
+            'linking_id_str_mv' => [
+                '123',
+            ],
         ];
 
         $this->compareArray($expected, $fields, 'toSolrArray');
